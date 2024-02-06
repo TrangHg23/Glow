@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import SigninForm from './_auth/forms/SigninForm';
-import SignupForm from './_auth/forms/SignupForm';
-import { Home } from './_root/pages';
 import AuthLayout from './_auth/AuthLayout';
 import { RootLayout } from './_root/RootLayout';
+import { publicRoutes } from './routes';
+import { DefaultLayout } from './components/Layout';
+import { Fragment } from 'react';
 
 function App() {
     return (
@@ -11,14 +11,29 @@ function App() {
             <Routes>
                 {/* public routes */}
                 <Route element={<AuthLayout />}>
-                    <Route path="/sign-in" element={<SigninForm />} />
-                    <Route path="/sign-up" element={<SignupForm />} />
+                    {publicRoutes.map((route, index) => {
+                        let Layout;
+                        if (route.layout === null) Layout = Fragment;
+                        else if (route.layout) Layout = route.layout;
+                        else Layout = DefaultLayout;
+
+                        const Page = route.component;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
                 </Route>
 
                 {/* private routes */}
-                <Route element={<RootLayout />}>
-                    <Route index element={<Home />} />
-                </Route>
+                <Route element={<RootLayout />}></Route>
             </Routes>
         </main>
     );
