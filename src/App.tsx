@@ -7,7 +7,7 @@ import { Fragment } from 'react';
 
 function App() {
     return (
-        <main className="flex h-screen">
+        <main>
             <Routes>
                 {/* public routes */}
                 <Route element={<AuthLayout />}>
