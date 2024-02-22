@@ -1,0 +1,32 @@
+.ant-carousel .slick-dots li {
+    width: 12px !important;
+    height: 12px;
+
+    button {
+        width: 12px;
+        height: 12px;
+        background-color: #d6ac95;
+        border: #d6ac95 1px solid;
+    }
+}
+
+
+.hidden {
+    display: none !important;
+}
+  
+.block {
+  display: block !important;
+}
+  
+@media (min-width: 640px) {
+  .sm {
+    &\:block {
+      display: block !important;
+    }
+
+    &\:hidden {
+      display: none !important;
+    }
+  }
+}
