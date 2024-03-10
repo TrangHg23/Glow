@@ -15,7 +15,11 @@ body {
     text-rendering: optimizespeed;
 }
 
-// fontSize
+:root {
+    --main-color: #d6ac95;
+}
+
+// fontfamily
 .fontPoppins {
     font-family: 'Poppins', sans-serif;
 }
@@ -24,4 +28,13 @@ body {
 }
 .fontPlayfair {
     font-family: 'Playfair Display', serif;
+}
+
+@mixin breakpoint($point) {
+    @if $point == lg {
+        // 990px
+        @media (min-width: 61.875em) {
+            @content;
+        }
+    }
 }
